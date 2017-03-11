@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var session = require('express-session');
-var passport = require('passport');
-
+var session = require('express-session')
 var app = express()
 app.use(session({
   secret: 'sd1f31ds32f123sd13f21s3d1f321sd31f',
@@ -39,21 +37,12 @@ router.get('/test', function (req, res) {
     console.log('The solution is: ', rows[0].nb);
   });
 
-  connection.query('INSERT INTO actors SET ?', { firstname: 'julien', lastname: 'boyer' }, function (error, results, fields) {
-    if (error) throw error;
-    console.log(results.insertId);
-  });
-
   res.render('test', { prenom: 'Julien' });
 });
-
-
 router.post('/testo', function (req, res) {
   console.log(req.body);
   res.render('test', { prenom: 'Julien' });
 });
-
-
 router.post('/tester', function (req, res) {
   var sess = req.session;
   if (sess.views) {

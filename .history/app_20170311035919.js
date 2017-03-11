@@ -56,6 +56,7 @@ app.use(function (err, req, res, next) {
 });
 
 
+
 app.get('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',

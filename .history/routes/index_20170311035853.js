@@ -47,6 +47,17 @@ router.get('/test', function (req, res) {
   res.render('test', { prenom: 'Julien' });
 });
 
+router.get('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true
+}),
+  function (req, res) {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('/users/' + req.user.username);
+  });
+
 
 router.post('/testo', function (req, res) {
   console.log(req.body);

@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var session = require('express-session');
-var passport = require('passport');
-
+var session = require('express-session')
 var app = express()
 app.use(session({
   secret: 'sd1f31ds32f123sd13f21s3d1f321sd31f',
@@ -41,11 +39,24 @@ router.get('/test', function (req, res) {
 
   connection.query('INSERT INTO actors SET ?', { firstname: 'julien', lastname: 'boyer' }, function (error, results, fields) {
     if (error) throw error;
-    console.log(results.insertId);
+    console.log(result.insertId);
   });
 
   res.render('test', { prenom: 'Julien' });
 });
+
+app.post('/login', passport.authenticate('local'),
+  function (req, res) {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('/users/' + req.user.username);
+  });
+
+app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  }));
 
 
 router.post('/testo', function (req, res) {
