@@ -3,7 +3,7 @@ var router = express.Router();
 var session = require('express-session');
 var passport = require('passport');
 
-var app = express();
+var app = express()
 app.use(session({
   secret: 'sd1f31ds32f123sd13f21s3d1f321sd31f',
   resave: false,
@@ -65,22 +65,17 @@ router.get('/edit/:id', function (req, res) {
 
 
 
-/**
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
- * Store action
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
- */
 
-router.post('/save/:id', function (req, res) {
-  var id = req.params.id;
-  var valeur = req.params.valeur;
-  var query = connection.query('UPDATE pages SET ? WHERE ?', [{ valeur: valeur }, { id: id }])
-  res.redirect('/');
+
+router.post('/tester', function (req, res) {
+  var sess = req.session;
+  if (sess.views) {
+    sess.views++;
+  } else {
+    sess.views = 1;
+  }
+  res.render('test', { prenom: 'Boyer', sess: sess.views });
+  res.end();
 });
-
-
-
-
-
 
 module.exports = router;

@@ -56,11 +56,6 @@ app.use(function (err, req, res, next) {
 });
 
 
-
-
-/**
- * Authentification
- */
 app.get('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',

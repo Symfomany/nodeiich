@@ -41,10 +41,7 @@ app.use(function (req, res, next) {
   next(err);
 });
 
-
-/**
- * 500 View Error 
- */
+// error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -56,11 +53,6 @@ app.use(function (err, req, res, next) {
 });
 
 
-
-
-/**
- * Authentification
- */
 app.get('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',

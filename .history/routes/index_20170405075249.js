@@ -73,9 +73,10 @@ router.get('/edit/:id', function (req, res) {
 
 router.post('/save/:id', function (req, res) {
   var id = req.params.id;
-  var valeur = req.params.valeur;
-  var query = connection.query('UPDATE pages SET ? WHERE ?', [{ valeur: valeur }, { id: id }])
+  var id = req.params.content;
+  var query = connection.query('UPDATE pages SET ? WHERE ?', [{ content: name }, { id: id }])
   res.redirect('/');
+
 });
 
 

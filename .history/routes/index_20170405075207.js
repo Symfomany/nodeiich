@@ -3,7 +3,7 @@ var router = express.Router();
 var session = require('express-session');
 var passport = require('passport');
 
-var app = express();
+var app = express()
 app.use(session({
   secret: 'sd1f31ds32f123sd13f21s3d1f321sd31f',
   resave: false,
@@ -63,8 +63,6 @@ router.get('/edit/:id', function (req, res) {
   });
 });
 
-
-
 /**
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
  * Store action
@@ -73,9 +71,9 @@ router.get('/edit/:id', function (req, res) {
 
 router.post('/save/:id', function (req, res) {
   var id = req.params.id;
-  var valeur = req.params.valeur;
-  var query = connection.query('UPDATE pages SET ? WHERE ?', [{ valeur: valeur }, { id: id }])
+  var query = connection.query('UPDATE pages SET ? WHERE ?', [{ content: name }, { id: id }])
   res.redirect('/');
+
 });
 
 

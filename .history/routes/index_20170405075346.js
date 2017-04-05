@@ -76,6 +76,7 @@ router.post('/save/:id', function (req, res) {
   var valeur = req.params.valeur;
   var query = connection.query('UPDATE pages SET ? WHERE ?', [{ valeur: valeur }, { id: id }])
   res.redirect('/');
+
 });
 
 

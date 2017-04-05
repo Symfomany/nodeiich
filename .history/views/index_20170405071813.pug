@@ -1,0 +1,8 @@
+extends layout.pug
+
+block content
+    h1 Liste des pages
+    p= `Nombre de pages: ${pages.length}`
+    ul
+    each item in pages
+        li= `${item.clef}  ${item.valeur}` 

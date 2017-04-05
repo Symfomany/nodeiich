@@ -1,0 +1,11 @@
+extends layout.pug
+
+block content
+    h1 Editer la page <strong>#{page.clef}</strong>
+    form(action="/save/ #{page.id}" method="POST")
+        .form-group
+            label(for='content') Contenu
+            |  
+            textarea#content.form-control(type='text' placeholder='Contenu' name="valeur") #{page.valeur}
+        |  
+        button.btn.btn-default(type='submit') Submit
